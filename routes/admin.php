@@ -1,0 +1,17 @@
+<?php
+Route::group(['prefix'=>'admin'],function(){
+	Route::group(['middleware'=>['admin.guest']],function(){
+		Route::get('/login','Auth\AdminLoginController@showLogin')->name('admin.login');
+		Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
+	});
+	Route::group(['middleware'=>['admin.auth']],function(){
+		Route::get('/','AdminController@index')->name('admin.dashboard');
+		Route::get('/review_post','AdminController@reviewPost');
+		Route::get('/publicpost/{id}','AdminController@publicpost');
+		Route::get('/submitpost/{id}','AdminController@submitpost');
+		Route::get('/member_profile','AdminController@memberProfile');
+		Route::get('/viewprofile/{id}','AdminController@viewprofile');
+		Route::get('/deleteuser/{id}',"AdminController@deleteuser");
+	});
+});
+?>

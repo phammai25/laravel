@@ -1,6 +1,4 @@
 <?php
-use App\Http\Middleware\AdminMiddleware;
-use App\Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +16,7 @@ use App\Admin;
 // });
 
 Auth::routes();
+
 Route::group(['middleware'=>'user'],function(){
 	Route::get('/','HomePageController@index');
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -31,12 +30,5 @@ Route::group(['middleware'=>'user'],function(){
 	Route::get('/deletepost/{id}','EditPostController@deletepost');
 });
 //admin
-Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
-	Route::get('/','AdminController@index')->name('admin.dashboard');
-	Route::get('/login','Auth\AdminLoginController@showLogin')->name('admin.login');
-	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
-	Route::get('/review_post','AdminController@reviewPost');
-	Route::get('/member_profile','AdminController@memberProfile');
 
-});
 

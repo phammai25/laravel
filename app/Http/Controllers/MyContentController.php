@@ -14,8 +14,7 @@ class MyContentController extends Controller
    }
     function viewpost($id)
     {
-
-    	$viewpost = Post::find($id);
+        $viewpost = Post::find($id);
 		return view('viewmypost')->with('viewpost',$viewpost);
     }
 

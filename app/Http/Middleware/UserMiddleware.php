@@ -17,11 +17,8 @@ class UserMiddleware
     public function handle($request, Closure $next, $guard = 'web')
     {
         if(!Auth::guard($guard)->check()){
-            return Redirect::to(url('/login'));
+            return Redirect::to(url('/abc'));
         }
-        else{
-            return $next($request);
-           
-        }
+        return $next($request); 
     }
 }

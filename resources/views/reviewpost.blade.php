@@ -13,10 +13,10 @@
 <body>
 
 <div class="container">
-	@foreach ($mypost as $arr)
+	@foreach ($post as $arr)
 	<div class="well">
         <div class="media">
-           <div class="media-body"><h4 class="media-heading" style="color: blue"><a href="{{url('/viewmypost/'.$arr['id'])}}"><?php echo $arr['tag']?></a></h4>
+           <div class="media-body"><h4 class="media-heading" style="color: blue"><a href="{{url('/admin/publicpost/'.$arr['id'])}}"><?php echo $arr['tag']?></a></h4>
            	 <p class="text-right">
            	 <?php
                   if($arr['status']=='1'){ echo "Public";}
